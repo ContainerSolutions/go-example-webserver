@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-./go-example-webserver &
+/server &
 ID=$! # ID of webserver process, so we can kill it
 
 tests_passed=true
