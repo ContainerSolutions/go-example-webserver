@@ -13,11 +13,5 @@ pipeline {
 				sh 'go build'
 			}
 		}
-		stage('Test') {
-			steps {
-				echo 'Testing...'
-				sh 'go test'
-			}
-		}
 	}
 }
