@@ -5,11 +5,12 @@ pipeline {
 
 	stages {
 		stage('Build') {
-			withEnv(["GOPATH=${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"]) {
-				steps {
-					echo 'Building...'
-					sh 'go build'
-				}
+			environment {
+				GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
+			}
+			steps {
+				echo 'Building...'
+				sh 'go build'
 			}
 		}
 		stage('Test') {
