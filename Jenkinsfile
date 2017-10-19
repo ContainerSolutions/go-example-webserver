@@ -4,12 +4,12 @@ pipeline {
 	}
 
 	stages {
-	withEnv(["GOPATH=${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"]) {
-   
 		stage('Build') {
-			steps {
-				echo 'Building...'
-				sh 'go build'
+			withEnv(["GOPATH=${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"]) {
+				steps {
+					echo 'Building...'
+					sh 'go build'
+				}
 			}
 		}
 		stage('Test') {
@@ -18,6 +18,5 @@ pipeline {
 				sh 'go test'
 			}
 		}
-	}
 	}
 }
