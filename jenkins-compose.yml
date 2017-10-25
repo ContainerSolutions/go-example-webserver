@@ -1,0 +1,11 @@
+version: '3'
+services:
+  master:
+    image: icrosby/jenkins-master:latest
+    # build: ./jenkins_master
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+     - "8081:8080"
+     - "50000:50000"
+    restart: always
