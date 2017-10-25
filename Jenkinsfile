@@ -1,27 +1,18 @@
-pipeline {
-    agent {
-        docker { 
-            image 'icrosby/jenkins-agent:kube'
-            args '-u root'
+node {
+
+    checkout scm
+
+    echo 'Building Go App'
+    stage("build") {
+        docker.image("icrosby/jenkins-agent:kube").inside('-u root') {
+            sh 'go build' 
         }
     }
 
-    stages {
-        stage('Build') {
-            environment {
-                GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
-            }
-            steps {
-                echo 'Building...'
-                sh 'go build'
-                
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                sh 'go test'
-            }
+    echo 'Testing Go App'
+    stage("test") {
+        docker.image('icrosby/jenkins-agent:kube').inside('-u root') {
+            sh 'go test' 
         }
     }
 }
