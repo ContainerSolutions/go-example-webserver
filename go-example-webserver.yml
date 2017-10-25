@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: go-example-webserver
+  labels:
+    name: go-example-webserver
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        name: go-example-webserver
+    spec:
+      containers:
+        - name: go-example-webserver
+          image: <docker-hub-username>/go-example-webserver
+          ports:
+            - containerPort: 8080
