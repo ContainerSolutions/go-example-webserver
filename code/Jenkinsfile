@@ -1,0 +1,24 @@
+podTemplate(cloud: 'local cluster', label: 'pod', containers: [
+    containerTemplate(
+        name: 'go', 
+        image: 'golang:1.6.3-onbuild', 
+        ttyEnabled: true, 
+        command: 'cat'
+    ),
+) {
+    node('pod') {
+        checkout scm
+
+        container('go') {
+            stage('build') {
+		sh("go build")
+            }
+        }
+
+	container('go') {
+	    stage("test") {
+		sh("go test")
+	    }
+	}
+    }
+}
