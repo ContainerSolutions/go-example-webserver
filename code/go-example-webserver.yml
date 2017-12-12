@@ -18,4 +18,4 @@ spec:
         - name: go-example-webserver
           image: gcr.io/container-solutions-workshops/<YOUR_APP_NAME>
           ports:
-            - containerPort: 8081
+            - containerPort: 8080
