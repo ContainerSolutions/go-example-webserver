@@ -5,7 +5,7 @@ podTemplate(cloud: 'local cluster', label: 'pod', containers: [
         ttyEnabled: true, 
         command: 'cat'
     ),
-) {
+]) {
     node('pod') {
         checkout scm
 

@@ -6,4 +6,4 @@ COPY test.sh /
 RUN chmod +x /test.sh
 
 CMD /server
-EXPOSE 8080
+EXPOSE 8081

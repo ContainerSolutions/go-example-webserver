@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: go-example-webserver
-          image: <docker-hub-username>/go-example-webserver
+          image: gcr.io/container-solutions-workshops/<YOUR_APP_NAME>
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
