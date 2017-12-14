@@ -2,8 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: go-example-webserver
-  labels:
-    name: go-example-webserver
 spec:
   replicas: 1
   strategy:
@@ -12,7 +10,8 @@ spec:
   template:
     metadata:
       labels:
-        name: go-example-webserver
+        app: go-example-webserver
+        env: canary
     spec:
       containers:
         - name: go-example-webserver
